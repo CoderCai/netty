@@ -420,6 +420,7 @@ public final class NioEventLoop extends SingleThreadEventLoop {
 
     @Override
     protected void run() {
+        // 死循环监听、处理事件
         for (;;) {
             try {
                 try {
