@@ -36,6 +36,7 @@ import java.util.List;
  * +-----+-----+-----+
  * </pre>
  */
+// 方式2
 public class FixedLengthFrameDecoder extends ByteToMessageDecoder {
 
     private final int frameLength;
@@ -71,9 +72,11 @@ public class FixedLengthFrameDecoder extends ByteToMessageDecoder {
      */
     protected Object decode(
             @SuppressWarnings("UnusedParameters") ChannelHandlerContext ctx, ByteBuf in) throws Exception {
+        // 长度不够一帧
         if (in.readableBytes() < frameLength) {
             return null;
         } else {
+            // 长度刚够或者沾包
             return in.readRetainedSlice(frameLength);
         }
     }

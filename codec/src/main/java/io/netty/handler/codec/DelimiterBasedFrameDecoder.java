@@ -55,6 +55,7 @@ import java.util.List;
  * +----------+
  * </pre>
  */
+// 方式1
 public class DelimiterBasedFrameDecoder extends ByteToMessageDecoder {
 
     private final ByteBuf[] delimiters;
