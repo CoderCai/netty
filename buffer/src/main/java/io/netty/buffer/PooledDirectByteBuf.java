@@ -29,6 +29,7 @@ import java.nio.channels.ScatteringByteChannel;
 
 final class PooledDirectByteBuf extends PooledByteBuf<ByteBuffer> {
 
+    // Recycler -> Netty的轻量级线程池
     private static final Recycler<PooledDirectByteBuf> RECYCLER = new Recycler<PooledDirectByteBuf>() {
         @Override
         protected PooledDirectByteBuf newObject(Handle<PooledDirectByteBuf> handle) {
@@ -36,6 +37,7 @@ final class PooledDirectByteBuf extends PooledByteBuf<ByteBuffer> {
         }
     };
 
+    // 从"池"里借用一个
     static PooledDirectByteBuf newInstance(int maxCapacity) {
         PooledDirectByteBuf buf = RECYCLER.get();
         buf.reuse(maxCapacity);

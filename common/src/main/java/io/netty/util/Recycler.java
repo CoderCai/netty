@@ -152,6 +152,7 @@ public abstract class Recycler<T> {
         }
     }
 
+    // 借用
     @SuppressWarnings("unchecked")
     public final T get() {
         if (maxCapacityPerThread == 0) {
@@ -169,6 +170,7 @@ public abstract class Recycler<T> {
     /**
      * @deprecated use {@link Handle#recycle(Object)}.
      */
+    // 归还
     @Deprecated
     public final boolean recycle(T o, Handle<T> handle) {
         if (handle == NOOP_HANDLE) {
