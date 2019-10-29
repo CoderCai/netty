@@ -67,6 +67,7 @@ import java.util.List;
  * is not released or added to the <tt>out</tt> {@link List}. Use derived buffers like {@link ByteBuf#readSlice(int)}
  * to avoid leaking memory.
  */
+// 一次解码器，解决网络接受到的网络数据的沾包和半包问题，即：原始数据流(字节)-->用户数据流(字节)
 public abstract class ByteToMessageDecoder extends ChannelInboundHandlerAdapter {
 
     /**
